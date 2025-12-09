@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
-// This is a reusable text input box component
+/// Composant champ de texte réutilisable personnalisé
+/// Utilisé pour les formulaires (login, inscription, édition de profil, etc.)
 class MyTextfield extends StatelessWidget {
-    final controller; // Gets the text that user types
-    final String hintText; // Placeholder text to show
-    final bool obscureText; // Hide text for passwords (true) or show it (false)
+    final TextEditingController controller;      // Contrôleur pour récupérer le texte saisi par l'utilisateur
+    final String hintText; // Texte indicatif (placeholder) à afficher dans le champ
+    final bool obscureText; // Masquer le texte pour les mots de passe (true) ou l'afficher (false)
     
     const MyTextfield(
       {
@@ -16,25 +17,27 @@ class MyTextfield extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Create the text input box with padding
+    // Créer le champ de saisie avec un padding externe
     return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: TextField(
-                  controller: controller,
-                  obscureText: obscureText, // Hide or show text
+                  controller: controller,    // Associer le contrôleur
+                  obscureText: obscureText,  // Masquer ou afficher le texte
                   decoration: InputDecoration(
+                    // Bordure quand le champ n'est pas sélectionné
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: const Color.fromARGB(255, 158, 133, 234), width: 2), // Purple border
+                      borderSide: BorderSide(color: const Color.fromARGB(255, 158, 133, 234), width: 2), // Bordure violette
                     ),
+                    // Bordure quand l'utilisateur tape dans le champ
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: const Color.fromARGB(255, 255, 255, 255), width: 2), // White border when typing
+                      borderSide: BorderSide(color: const Color.fromARGB(255, 255, 255, 255), width: 2), // Bordure blanche
                     ),
-                    fillColor:  const Color.fromARGB(255, 235, 236, 237), // Light gray background
-                    filled: true,
-                    border: OutlineInputBorder(),
-                    hintText: hintText, // Show placeholder text
-                    hintStyle: TextStyle(color: const Color.fromARGB(255, 23, 22, 22)), // Dark gray placeholder text
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 27.0), // Space inside the box
+                    fillColor:  const Color.fromARGB(255, 235, 236, 237), // Couleur de fond gris clair
+                    filled: true, // Activer le remplissage de couleur
+                    border: OutlineInputBorder(), // Bordure générale
+                    hintText: hintText, // Afficher le texte indicatif
+                    hintStyle: TextStyle(color: const Color.fromARGB(255, 23, 22, 22)), // Style du placeholder (gris foncé)
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 27.0), // Espace intérieur du champ
                   ),
                 ),
               );

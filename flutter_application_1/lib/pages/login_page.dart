@@ -5,6 +5,7 @@ import 'package:flutter_application_1/components/my_textfield.dart';
 import 'package:flutter_application_1/components/square_tile.dart';
 import 'package:flutter_application_1/pages/register_page.dart';
 import 'package:flutter_application_1/pages/home_page.dart';
+import 'package:flutter_application_1/pages/forgot_password_page.dart';
 
 // This is the Login Page that shows when the app starts
 class LoginPage extends StatelessWidget {
@@ -44,7 +45,7 @@ class LoginPage extends StatelessWidget {
               
               // Show "Login Page" title
               Text('Login Page', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold,color: const Color.fromARGB(255, 200, 224, 236)),),
-              const SizedBox(height: 100),
+              const SizedBox(height: 40),
               
               // Show "Login Information" label
               Padding(
@@ -72,13 +73,27 @@ class LoginPage extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               
-              // "Forgot Password?" link
+              // "Forgot Password?" button
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text('  Forgot Password?', style: TextStyle(color: const Color.fromARGB(255, 192, 216, 228))),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ForgotPasswordPage()),
+                        );
+                      },
+                      child: Text(
+                        'Forgot Password?',
+                        style: TextStyle(
+                          color: const Color.fromARGB(255, 83, 102, 188),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -88,7 +103,7 @@ class LoginPage extends StatelessWidget {
               MyButton(
                 onTap: signUserIn,
               ),
-              const SizedBox(height: 50),
+              const SizedBox(height: 37),
 
               // "or continue with" divider
               Padding(

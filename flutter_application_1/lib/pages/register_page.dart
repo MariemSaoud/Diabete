@@ -4,7 +4,7 @@ import 'package:flutter_application_1/components/my_textfield.dart';
 
 // This is the Registration Page for creating new user accounts
 class RegisterPage extends StatefulWidget {
-  RegisterPage({super.key});
+  const RegisterPage({super.key});
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
@@ -75,13 +75,17 @@ class _RegisterPageState extends State<RegisterPage> {
     }
     
     // All checks passed! Show success message
-    ScaffoldMessenger.of(context).showSnackBar(
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
+    final navigator = Navigator.of(context);
+    scaffoldMessenger.showSnackBar(
       const SnackBar(content: Text('Registration successful!')),
     );
     
     // Wait 1 second then go back to login page
     Future.delayed(const Duration(seconds: 1), () {
-      Navigator.pop(context);
+      if (mounted) {
+        navigator.pop();
+      }
     });
   }
   
@@ -207,7 +211,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   padding: const EdgeInsets.symmetric(vertical: 12),
                                   decoration: BoxDecoration(
                                     color: selectedGender == 'Male'
-                                        ? const Color.fromARGB(255, 11, 2, 129)
+                                        ? const  Color.fromARGB(255, 58, 75, 150)
                                         : Colors.transparent,
                                     borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(6),
@@ -321,6 +325,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 // Register button
                 MyButton(
                   onTap: signUserUp,
+                  text: 'Sign up',
                 ),
                 const SizedBox(height: 30),
                 

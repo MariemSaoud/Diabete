@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
-// This is a reusable square button that shows an image (for Google, Apple login, etc.)
+/// Composant tuile carrée réutilisable pour afficher des images
+/// Utilisé pour les boutons de connexion avec services externes (Google, Apple, etc.)
 class SquareTile extends StatelessWidget {
-  final String imagePath; // Path to the image file to display
+  final String imagePath; // Chemin vers le fichier image à afficher
   
   const SquareTile({
     super.key,
@@ -10,17 +11,18 @@ class SquareTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Create a square box with an image inside
+    // Créer une boîte carrée avec une image à l'intérieur
     return Container(
-      padding: const EdgeInsets.all(20), // Space inside the box
+      padding: const EdgeInsets.all(20), // Espace intérieur de la boîte
       decoration: BoxDecoration(
-        border: Border.all(color: const Color.fromARGB(255, 234, 230, 230)), // Light gray border
-        color: const Color.fromARGB(255, 234, 234, 234), // Light gray background
-        borderRadius: BorderRadius.circular(8), // Rounded corners
+        border: Border.all(color: const Color.fromARGB(255, 234, 230, 230)), // Bordure gris clair
+        color: const Color.fromARGB(255, 234, 234, 234), // Couleur de fond gris clair
+        borderRadius: BorderRadius.circular(8), // Coins arrondis
       ),
+      // Afficher l'image depuis les assets
       child: Image.asset(
         imagePath,
-        height: 40, // Size of the image
+        height: 40, // Taille de l'image (hauteur)
       ),
     );
   }
